@@ -1,0 +1,37 @@
+# 금지 경로 목록. guard-paths.sh가 읽는다.
+# 한 줄에 glob 하나. '#'으로 시작하는 줄과 빈 줄은 무시한다.
+#   *   경로 구분자를 넘지 않는 임의 문자열
+#   **  경로 구분자를 포함한 임의 문자열
+# 패턴은 경로의 어느 위치에서든 "구성 요소 단위"로 일치하면 차단한다.
+# 예: '.env'는 a/b/.env 를 막지만 a/b/my.env.txt 는 막지 않는다.
+# 대소문자는 구분하지 않는다.
+# 프로젝트 고유 금지 경로는 이 파일 맨 아래에 추가하고 프로필의 '금지 경로'에도 적는다.
+
+# 환경 변수·비밀 설정
+.env
+.env.*
+application-secret*.yml
+application-secret*.yaml
+application-secret*.properties
+secrets/**
+
+# 키·인증서
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+id_rsa*
+id_ed25519*
+.ssh/**
+
+# 클라우드·도구 자격 증명
+.aws/**
+.kube/config
+.npmrc
+.netrc
+credentials.json
+service-account*.json
+
+# --- 프로젝트 고유 (여기 아래에 추가) ---
